@@ -9,6 +9,7 @@
 #include "image.h"
 #include "bullet.h"
 #include "show.h"
+#include "image.h"
 
 void gameinit() {
 	loadimage(&gameimage.background1, _T("image\\background_0.png"));
@@ -30,9 +31,11 @@ void gameinit() {
 	loadimage(&gameimage.bullet_left[0], _T("image\\bullet_left_0.jpg"));
 	loadimage(&gameimage.bullet_left[1], _T("image\\bullet_left_1.jpg"));
 
-	
+	loadimage(&gameimage.hit[0], _T("image\\hit_0.jpg"));
+	loadimage(&gameimage.hit[1], _T("image\\hit_1.jpg"));
 
 	initbullet();
+	initimagelinks();
 
 	DWORD bullet_time1 = bullet_time2 = GetTickCount();
 
@@ -88,6 +91,7 @@ int main () {
 	move2(role[1], clock() - time);
 	time = clock();
 
+	updataimage();
 	updatabullet();
 
 	showpoint();

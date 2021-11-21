@@ -1,5 +1,4 @@
 #include "bullet.h"
-#include <stdio.h>
 
 
 bullet* bullethead;
@@ -15,7 +14,6 @@ void initbullet() {
   else {
     bullethead->next = NULL;
   }
-  
 }
 
 void addbullet(int rolenum) {
@@ -68,6 +66,7 @@ void deletebullet() {
     if (isdelete) {
       role[shotrole].hp--;
       role[shotrole].vx = (p->next->direction) * (300);
+      addimage(role[shotrole].x + 40, role[shotrole].y + 20, 400, &(gameimage.hit[0]), &gameimage.hit[1]);
     }
 
     //over edge

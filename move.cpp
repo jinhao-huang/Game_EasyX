@@ -97,13 +97,16 @@ void move1(struct Role &role, clock_t time) {
   if (role.vx > 0) {
     role.x += role.vx * (time / 1000.0);
     role.vx -= gx * (time / 1000.0);
+    if (role.vx < 0) {
+      role.vx = 0;
+    }
   }
   else if (role.vx < 0) {
     role.x += role.vx * (time / 1000.0);
     role.vx += gx * (time / 1000.0);
-  }
-  if (role.vx < 5 && role.vx > (-5)) {
-    role.vx = 0;
+    if (role.vx > 0) {
+      role.vx = 0;
+    }
   }
   return;
 }
@@ -152,11 +155,24 @@ void move2(struct Role& role, clock_t time) {
       role.vy = 0;
       floor = island(role);
     }
-    if (role.y > 800) {
-      reborn(role);
-    }
   }
 #endif
-
+  if (role.y > 800) {
+    reborn(role);
+  }
+  if (role.vx > 0) {
+    role.x += role.vx * (time / 1000.0);
+    role.vx -= gx * (time / 1000.0);
+    if (role.vx < 0) {
+      role.vx = 0;
+    }
+  }
+  else if (role.vx < 0) {
+    role.x += role.vx * (time / 1000.0);
+    role.vx += gx * (time / 1000.0);
+    if (role.vx > 0) {
+      role.vx = 0;
+    }
+  }
   return;
 }

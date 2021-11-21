@@ -24,5 +24,6 @@ void reborn(struct Role& role) {
   role.y = borny[role.num];
   role.hp = initialhp;
   role.vy = 0;
+  role.vx = 0;
   return;
 }
