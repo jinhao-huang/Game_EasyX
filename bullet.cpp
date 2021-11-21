@@ -26,10 +26,12 @@ void addbullet(int rolenum) {
     newbullet->next = NULL;
     newbullet->direction = role[rolenum].direction;
     if (newbullet->direction == rightdire) {
+      addimage(role[rolenum].x + 123, role[rolenum].y + 79, 50, &gameimage.fire[0], &gameimage.fire[1]);
       newbullet->x = role[rolenum].x + 115;
       newbullet->y = role[rolenum].y + 95;
     }
     else {
+      addimage(role[rolenum].x + 32, role[rolenum].y + 79, 50, &gameimage.fire_left[0], &gameimage.fire_left[1]);
       newbullet->x = role[rolenum].x + 10;
       newbullet->y = role[rolenum].y + 95;
     }
@@ -66,7 +68,7 @@ void deletebullet() {
     if (isdelete) {
       role[shotrole].hp--;
       role[shotrole].vx = (p->next->direction) * (300);
-      addimage(role[shotrole].x + 40, role[shotrole].y + 20, 400, &(gameimage.hit[0]), &gameimage.hit[1]);
+      addimage(role[shotrole].x + 40, role[shotrole].y + 20, 400, &gameimage.hit[0], &gameimage.hit[1]);
     }
 
     //over edge

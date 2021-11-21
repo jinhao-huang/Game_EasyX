@@ -34,6 +34,11 @@ void gameinit() {
 	loadimage(&gameimage.hit[0], _T("image\\hit_0.jpg"));
 	loadimage(&gameimage.hit[1], _T("image\\hit_1.jpg"));
 
+	loadimage(&gameimage.fire[0], _T("image\\fire_0.jpg"));
+	loadimage(&gameimage.fire[1], _T("image\\fire_1.jpg"));
+	loadimage(&gameimage.fire_left[0], _T("image\\fire_0_left.jpg"));
+	loadimage(&gameimage.fire_left[1], _T("image\\fire_1_left.jpg"));
+
 	initbullet();
 	initimagelinks();
 

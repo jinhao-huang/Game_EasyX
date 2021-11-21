@@ -14,6 +14,9 @@ struct Gameimage {
 	IMAGE bullet_left[2];
 
 	IMAGE hit[2];
+
+	IMAGE fire[2];
+	IMAGE fire_left[2];
 };
 
 extern struct Gameimage gameimage;
