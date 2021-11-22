@@ -18,3 +18,10 @@ struct Role {
 bool isinside(int x, int y, int rolenum);
 void reborn(struct Role& role);
 extern struct Role role[2];
+
+extern int rrole_rm;
+extern int rrole_lm;
+extern int lrole_rm;
+extern int lrole_lm;
+extern int role_tm;
+extern int role_bm;

@@ -6,7 +6,7 @@ int movespeed = 1;
 int bulletspeed = 6;
 int gap_time = 200;
 double g = 1000;
-double gx = 600;
+double gx = 300;
 
 int initialhp = 30;
 
