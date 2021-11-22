@@ -6,47 +6,47 @@ int floor = -1;
 
 bool island(struct Role& role) {
   if (role.x >= 463 && role.x <= 589
-    && role.y > 14 && role.y < 19) {
+    && role.y >= 14 && role.y < 19) {
     role.y = 14;
     return true;
   }
   if (role.x >= 302 && role.x <= 740
-    && role.y > 91 && role.y < 96) {
+    && role.y >= 91 && role.y < 96) {
     role.y = 91;
     return true;
   }
   if (role.x >= 129 && role.x <= 270
-    && role.y > 152 && role.y < 157) {
+    && role.y >= 152 && role.y < 157) {
     role.y = 152;
     return true;
   }
   if (role.x >= 761 && role.x <= 884
-    && role.y > 152 && role.y < 157) {
+    && role.y >= 152 && role.y < 157) {
     role.y = 152;
     return true;
   }
   if (role.x >= 69 && role.x <= 386
-    && role.y > 233 && role.y < 238) {
+    && role.y >= 233 && role.y < 238) {
     role.y = 233;
     return true;
   }
   if (role.x >= 615 && role.x <= 925
-    && role.y > 233 && role.y < 238) {
+    && role.y >= 233 && role.y < 238) {
     role.y = 233;
     return true;
   }
   if (role.x >= 394 && role.x <= 593
-    && role.y > 305 && role.y < 310) {
+    && role.y >= 305 && role.y < 310) {
     role.y = 305;
     return true;
   }
   if (role.x >= 74 && role.x <= 455
-    && role.y > 368 && role.y < 373) {
+    && role.y >= 368 && role.y < 373) {
     role.y = 368;
     return true;
   }
   if (role.x >= 551 && role.x <= 950
-    && role.y > 368 && role.y < 373) {
+    && role.y >= 368 && role.y < 373) {
     role.y = 368;
     return true;
   }
@@ -58,11 +58,15 @@ void move1(struct Role &role, clock_t time) {
   if (presskey[UP_KEY] && land[0] == true) {
     land[0] = false;
     role.vy = -400;
-  } else
+  }
+  else
+  {
     if (presskey[UP_KEY] && land[0] == false && jump[0] == false) {
       jump[0] = true;
       role.vy = -400;
     }
+  }
+
   if (presskey[DOWN_KEY]) {
     if (land[0] == true) {
       land[0] = false;

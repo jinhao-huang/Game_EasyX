@@ -4,6 +4,7 @@
 int myinputkey;
 bool presskey[50];
 int kb;
+bool wkb = false;
 
 DWORD bullet_time1, bullet_time2;
 DWORD bullet_time3, bullet_time4;
@@ -21,7 +22,7 @@ void getorder() {
 	}
 #endif
 
-
+/*
 	if (_kbhit())
 	{
 		kb = _getch();
@@ -34,6 +35,8 @@ void getorder() {
 			}
 		}
 	}
+*/
+
 
 	/*
 	if (GetKeyState('W') & 0x8000)
@@ -43,6 +46,16 @@ void getorder() {
 	}	
 	*/
 
+
+	if ((GetAsyncKeyState('W') & 0x8000) && wkb == false)
+	{
+		wkb = true;
+		presskey[UP_KEY] = 1;
+	}
+
+	if (GetAsyncKeyState('W') == 0) {
+		wkb = false;
+	}
 
 	if (GetAsyncKeyState('S') & 0x8000)
 	{
