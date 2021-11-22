@@ -35,6 +35,15 @@ void getorder() {
 		}
 	}
 
+	/*
+	if (GetKeyState('W') & 0x8000)
+	{
+		presskey[UP_KEY] = 1;
+		printf("test");
+	}	
+	*/
+
+
 	if (GetAsyncKeyState('S') & 0x8000)
 	{
 		presskey[DOWN_KEY] = 1;
