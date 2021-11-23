@@ -1,14 +1,13 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
 #include "show.h"
-#include "role.h"
 
-void showpoint() {
-  static char hpmessage1[100];
-  static char hpmessage2[100];
-  sprintf_s(hpmessage1, "角色1HP：%d", role[0].hp);
-  sprintf_s(hpmessage2, "角色2HP：%d", role[1].hp);
-  outtextxy(100, 100, hpmessage1);
-  outtextxy(1000, 100, hpmessage2);
+void showpanel() {
+  Resize(&hp1, hpwidth * (role[0].hp / (double)initialhp), hpheight);
+  drawAlpha(&gameimage.role_panel, 100, 35);
+  drawAlpha(&hp1, 138, 54);
+  Resize(&hp2, hpwidth * (role[1].hp / (double)initialhp), hpheight);
+  drawAlpha(&gameimage.role_panel, 890, 35);
+  drawAlpha(&hp2, 928, 54);
+
+  outtextxy(142, 40, _T("玩家1"));
+  outtextxy(933, 40, _T("玩家2"));
 }

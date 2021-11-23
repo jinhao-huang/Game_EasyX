@@ -8,7 +8,8 @@ int lrole_rm = 126;
 int lrole_lm = 78;
 int role_tm = 53; //role's top margin
 int role_bm = 132; //role's bottom margin
-
+IMAGE hp1;
+IMAGE hp2;
 
 bool isinside(int x, int y, int rolenum) {
   if (role[rolenum].direction == rightdire) {
@@ -33,5 +34,7 @@ void reborn(struct Role& role) {
   role.hp = initialhp;
   role.vy = 0;
   role.vx = 0;
+  hp1 = gameimage.hp;
+  hp2 = gameimage.hp;
   return;
 }

@@ -22,7 +22,7 @@ void getorder() {
 	}
 #endif
 
-/*
+
 	if (_kbhit())
 	{
 		kb = _getch();
@@ -35,28 +35,20 @@ void getorder() {
 			}
 		}
 	}
-*/
+
+
 
 
 	/*
-	if (GetKeyState('W') & 0x8000)
-	{
-		presskey[UP_KEY] = 1;
-		printf("test");
-	}	
-	*/
-
-
 	if ((GetAsyncKeyState('W') & 0x8000) && wkb == false)
 	{
 		wkb = true;
 		presskey[UP_KEY] = 1;
 	}
-
 	if (GetAsyncKeyState('W') == 0) {
 		wkb = false;
 	}
-
+	*/
 	if (GetAsyncKeyState('S') & 0x8000)
 	{
 		presskey[DOWN_KEY] = 1;

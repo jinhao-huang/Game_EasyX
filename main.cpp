@@ -39,10 +39,24 @@ void gameinit() {
 	loadimage(&gameimage.fire_left[0], _T("image\\fire_0_left.jpg"));
 	loadimage(&gameimage.fire_left[1], _T("image\\fire_1_left.jpg"));
 
+	loadimage(&gameimage.role_panel, _T("image\\role_panel.png"));
+	loadimage(&gameimage.hp, _T("image\\hp.png"));
+
 	initbullet();
 	initimagelinks();
+	hpwidth = gameimage.hp.getwidth();
+	hpheight = gameimage.hp.getheight();
 
 	DWORD bullet_time1 = bullet_time2 = GetTickCount();
+
+	LOGFONT myfont;
+	gettextstyle(&myfont);
+	myfont.lfHeight = 12;
+	_tcscpy_s(myfont.lfFaceName, _T("ºÚÌå"));
+	myfont.lfQuality = PROOF_QUALITY;
+	settextstyle(&myfont);
+	setbkmode(TRANSPARENT);
+	settextcolor(BLACK);
 
 	role[0].num = 0;
 	role[1].num = 1;
@@ -64,12 +78,10 @@ int main () {
 	while (1) {
 	BeginBatchDraw();
 	putimage (0, 0, &gameimage.background1);
-	/*
-	putimage (centerx(gameimage.background1, gameimage.background3[0]), 0, &gameimage.background3[0], SRCAND);
-	putimage (centerx(gameimage.background1, gameimage.background3[1]), 0, &gameimage.background3[1], SRCINVERT);
-	*/
 	putimage (centerx(gameimage.background1, gameimage.background2[0]), 0, &gameimage.background2[0], SRCAND);
 	putimage (centerx(gameimage.background1, gameimage.background2[1]), 0, &gameimage.background2[1], SRCINVERT);
+	showpanel();
+
 
 	if (role[0].direction == rightdire) {
 		putimage ((int)role[0].x, (int)role[0].y, &gameimage.img_role[0], SRCAND);
@@ -99,7 +111,6 @@ int main () {
 	updataimage();
 	updatabullet();
 
-	showpoint();
 	EndBatchDraw();
 	if (role[0].hp <= 0) {
 		reborn(role[0]);

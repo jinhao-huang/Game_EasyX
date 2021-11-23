@@ -2,6 +2,9 @@
 #include <graphics.h>
 #include <time.h>
 
+extern int hpwidth;
+extern int hpheight;
+
 struct Gameimage {
 	IMAGE background1;
 	IMAGE background2[2];
@@ -17,6 +20,9 @@ struct Gameimage {
 
 	IMAGE fire[2];
 	IMAGE fire_left[2];
+
+	IMAGE role_panel;
+	IMAGE hp;
 };
 
 extern struct Gameimage gameimage;
@@ -34,3 +40,4 @@ typedef struct showimage {
 void initimagelinks();
 void addimage(int x, int y, int endtime, IMAGE* image1, IMAGE* image2);
 void updataimage();
+void drawAlpha(IMAGE* picture, int  picture_x, int picture_y);

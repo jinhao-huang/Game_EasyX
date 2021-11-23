@@ -1,5 +1,6 @@
 #pragma once
 #include "Settings.h"
+#include "image.h";
 
 enum dire {
 	leftdire = -1,
@@ -25,3 +26,5 @@ extern int lrole_rm;
 extern int lrole_lm;
 extern int role_tm;
 extern int role_bm;
+extern IMAGE hp1;
+extern IMAGE hp2;
