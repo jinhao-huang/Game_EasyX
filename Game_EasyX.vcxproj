@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="bullet.cpp" />
+    <ClCompile Include="control.cpp" />
     <ClCompile Include="image.cpp" />
     <ClCompile Include="key.cpp" />
     <ClCompile Include="main.cpp" />
@@ -150,6 +151,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bullet.h" />
+    <ClInclude Include="control.h" />
     <ClInclude Include="image.h" />
     <ClInclude Include="key.h" />
     <ClInclude Include="move.h" />

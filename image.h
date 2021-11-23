@@ -6,6 +6,8 @@ extern int hpwidth;
 extern int hpheight;
 
 struct Gameimage {
+	IMAGE start;
+
 	IMAGE background1;
 	IMAGE background2[2];
 	IMAGE background3[2];
@@ -23,6 +25,8 @@ struct Gameimage {
 
 	IMAGE role_panel;
 	IMAGE hp;
+
+	IMAGE winner[2];
 };
 
 extern struct Gameimage gameimage;
@@ -37,6 +41,7 @@ typedef struct showimage {
 	struct showimage* next;
 } imagelink;
 
+void initimage();
 void initimagelinks();
 void addimage(int x, int y, int endtime, IMAGE* image1, IMAGE* image2);
 void updataimage();

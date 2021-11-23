@@ -1,6 +1,8 @@
 #pragma once
 #include "Settings.h"
 #include "image.h";
+#include "control.h"
+#include "show.h"
 
 enum dire {
 	leftdire = -1,
@@ -10,12 +12,14 @@ enum dire {
 struct Role {
 	double x, y;
 	int hp = initialhp; //health point
+	int lives = 5;
 	int direction = rightdire;
 	double vy = 0;
 	double vx = 0;
 	int num;
 };
 
+void death();
 bool isinside(int x, int y, int rolenum);
 void reborn(struct Role& role);
 extern struct Role role[2];

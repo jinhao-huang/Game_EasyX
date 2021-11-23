@@ -11,6 +11,31 @@ int role_bm = 132; //role's bottom margin
 IMAGE hp1;
 IMAGE hp2;
 
+void death() {
+  if (role[0].hp <= 0 || role[0].y > 800) {
+    if (role[0].lives > 0)
+    {
+    reborn(role[0]);
+    role[0].lives -= 1;
+    }
+    else{
+      state = over;
+      gameover(2);
+    }
+  }
+  if (role[1].hp <= 0 || role[1].y > 800) {
+    if (role[1].lives > 0) {
+    reborn(role[1]);
+    role[1].lives -= 1;
+    }
+    else {
+      state = over;
+      gameover(1);
+    }
+  }
+
+}
+
 bool isinside(int x, int y, int rolenum) {
   if (role[rolenum].direction == rightdire) {
     if (x > role[rolenum].x + rrole_lm && x < role[rolenum].x + rrole_rm

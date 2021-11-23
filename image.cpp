@@ -5,6 +5,43 @@ imagelink* imagehead;
 int hpwidth;
 int hpheight;
 
+void initimage() {
+  loadimage(&gameimage.start, _T("image\\start.png"));
+
+  loadimage(&gameimage.background1, _T("image\\background_0.png"));
+  loadimage(&gameimage.background2[0], _T("image\\background_1_0.jpg"));
+  loadimage(&gameimage.background2[1], _T("image\\background_1_1.jpg"));
+
+  loadimage(&gameimage.img_role[0], _T("image\\role.jpg"));
+  loadimage(&gameimage.img_role[1], _T("image\\role_red.jpg"));
+  loadimage(&gameimage.img_role[2], _T("image\\role_blue.jpg"));
+
+  loadimage(&gameimage.img_role_left[0], _T("image\\role_left.jpg"));
+  loadimage(&gameimage.img_role_left[1], _T("image\\role_red_left.jpg"));
+  loadimage(&gameimage.img_role_left[2], _T("image\\role_blue_left.jpg"));
+
+
+  loadimage(&gameimage.bullet[0], _T("image\\bullet_0.jpg"));
+  loadimage(&gameimage.bullet[1], _T("image\\bullet_1.jpg"));
+
+  loadimage(&gameimage.bullet_left[0], _T("image\\bullet_left_0.jpg"));
+  loadimage(&gameimage.bullet_left[1], _T("image\\bullet_left_1.jpg"));
+
+  loadimage(&gameimage.hit[0], _T("image\\hit_0.jpg"));
+  loadimage(&gameimage.hit[1], _T("image\\hit_1.jpg"));
+
+  loadimage(&gameimage.fire[0], _T("image\\fire_0.jpg"));
+  loadimage(&gameimage.fire[1], _T("image\\fire_1.jpg"));
+  loadimage(&gameimage.fire_left[0], _T("image\\fire_0_left.jpg"));
+  loadimage(&gameimage.fire_left[1], _T("image\\fire_1_left.jpg"));
+
+  loadimage(&gameimage.role_panel, _T("image\\role_panel.png"));
+  loadimage(&gameimage.hp, _T("image\\hp.png"));
+
+  loadimage(&gameimage.winner[0], _T("image\\winner1.png"));
+  loadimage(&gameimage.winner[1], _T("image\\winner2.png"));
+}
+
 void drawAlpha(IMAGE* picture, int  picture_x, int picture_y) //x为载入图片的X坐标，y为Y坐标
 {
 

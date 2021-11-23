@@ -10,48 +10,26 @@
 #include "bullet.h"
 #include "show.h"
 #include "image.h"
+#include "control.h"
 
-void gameinit() {
-	loadimage(&gameimage.background1, _T("image\\background_0.png"));
-	loadimage(&gameimage.background2[0], _T("image\\background_1_0.jpg"));
-	loadimage(&gameimage.background2[1], _T("image\\background_1_1.jpg"));
+void startgame() {
+	DWORD bullet_time1 = bullet_time2 = GetTickCount();
+	role[0].lives = 5;
+	role[1].lives = 5;
+	reborn(role[0]);
+	reborn(role[1]);
+}
 
-	loadimage(&gameimage.img_role[0], _T("image\\role.jpg"));
-	loadimage(&gameimage.img_role[1], _T("image\\role_red.jpg"));
-	loadimage(&gameimage.img_role[2], _T("image\\role_blue.jpg"));
-
-	loadimage(&gameimage.img_role_left[0], _T("image\\role_left.jpg"));
-	loadimage(&gameimage.img_role_left[1], _T("image\\role_red_left.jpg"));
-	loadimage(&gameimage.img_role_left[2], _T("image\\role_blue_left.jpg"));
-
-
-	loadimage(&gameimage.bullet[0], _T("image\\bullet_0.jpg"));
-	loadimage(&gameimage.bullet[1], _T("image\\bullet_1.jpg"));
-
-	loadimage(&gameimage.bullet_left[0], _T("image\\bullet_left_0.jpg"));
-	loadimage(&gameimage.bullet_left[1], _T("image\\bullet_left_1.jpg"));
-
-	loadimage(&gameimage.hit[0], _T("image\\hit_0.jpg"));
-	loadimage(&gameimage.hit[1], _T("image\\hit_1.jpg"));
-
-	loadimage(&gameimage.fire[0], _T("image\\fire_0.jpg"));
-	loadimage(&gameimage.fire[1], _T("image\\fire_1.jpg"));
-	loadimage(&gameimage.fire_left[0], _T("image\\fire_0_left.jpg"));
-	loadimage(&gameimage.fire_left[1], _T("image\\fire_1_left.jpg"));
-
-	loadimage(&gameimage.role_panel, _T("image\\role_panel.png"));
-	loadimage(&gameimage.hp, _T("image\\hp.png"));
-
+void initgame() {
 	initbullet();
 	initimagelinks();
 	hpwidth = gameimage.hp.getwidth();
 	hpheight = gameimage.hp.getheight();
 
-	DWORD bullet_time1 = bullet_time2 = GetTickCount();
-
 	LOGFONT myfont;
 	gettextstyle(&myfont);
 	myfont.lfHeight = 12;
+	myfont.lfWeight = FW_NORMAL;
 	_tcscpy_s(myfont.lfFaceName, _T("ºÚÌå"));
 	myfont.lfQuality = PROOF_QUALITY;
 	settextstyle(&myfont);
@@ -60,10 +38,7 @@ void gameinit() {
 
 	role[0].num = 0;
 	role[1].num = 1;
-	reborn(role[0]);
-	reborn(role[1]);
- 	//loadimage(&gameimage.background3[0], _T("image\\background_2_0.jpg"));
-	//loadimage(&gameimage.background3[1], _T("image\\background_2_1.jpg"));
+
 	return;
 }
 
@@ -72,54 +47,56 @@ int centerx(IMAGE& back, IMAGE& front) {
 }
 
 int main () {
+	ExMessage m;
+	clock_t time;
 	initgraph (width, height, EW_SHOWCONSOLE);
-	gameinit ();
-	clock_t time = clock();
+	initimage();
+	initgame();
+	state = menu;
 	while (1) {
-	BeginBatchDraw();
-	putimage (0, 0, &gameimage.background1);
-	putimage (centerx(gameimage.background1, gameimage.background2[0]), 0, &gameimage.background2[0], SRCAND);
-	putimage (centerx(gameimage.background1, gameimage.background2[1]), 0, &gameimage.background2[1], SRCINVERT);
-	showpanel();
-
-
-	if (role[0].direction == rightdire) {
-		putimage ((int)role[0].x, (int)role[0].y, &gameimage.img_role[0], SRCAND);
-		putimage ((int)role[0].x, (int)role[0].y, &gameimage.img_role[1], SRCINVERT);
+		while (state == menu) {
+			putimage(0, 0, &gameimage.start);
+			m = getmessage(EM_MOUSE);
+			if (m.lbutton && m.x > 709 && m.x < 1109 && m.y > 428 && m.y < 498) {
+				state = game;
+				flushmessage(EM_MOUSE);
+				startgame();
+				time = clock();
+			}
+			if (m.lbutton && m.x > 709 && m.x < 1109 && m.y > 544 && m.y < 613) {
+				return 0;
+			}
+		}
+		while (state == game) {
+			BeginBatchDraw();
+			putimage(0, 0, &gameimage.background1);
+			putimage(centerx(gameimage.background1, gameimage.background2[0]), 0, &gameimage.background2[0], SRCAND);
+			putimage(centerx(gameimage.background1, gameimage.background2[1]), 0, &gameimage.background2[1], SRCINVERT);
+			showpanel();
+			showrole();
+			initkey();
+			getorder();
+			move1(role[0], clock() - time);
+			move2(role[1], clock() - time);
+			time = clock();
+			updataimage();
+			updatabullet();
+			death();
+			EndBatchDraw();
+		}
+		while (state == over) {
+			m = getmessage(EM_MOUSE);
+			if (m.lbutton && m.x > 837 && m.y > 545 && m.y < 600) {
+				state = game;
+				flushmessage(EM_MOUSE);
+				startgame();
+				time = clock();
+			}
+			if (m.lbutton && m.x < 330 && m.y > 545 && m.y < 600) {
+				state = menu;
+				flushmessage(EM_MOUSE);
+			}
+		}
 	}
-	else {
-		putimage((int)role[0].x, (int)role[0].y, &gameimage.img_role_left[0], SRCAND);
-		putimage((int)role[0].x, (int)role[0].y, &gameimage.img_role_left[1], SRCINVERT);
-	}
-	
-	if (role[1].direction == rightdire) {
-		putimage((int)role[1].x, (int)role[1].y, &gameimage.img_role[0], SRCAND);
-		putimage((int)role[1].x, (int)role[1].y, &gameimage.img_role[2], SRCINVERT);
-	}
-	else {
-		putimage((int)role[1].x, (int)role[1].y, &gameimage.img_role_left[0], SRCAND);
-		putimage((int)role[1].x, (int)role[1].y, &gameimage.img_role_left[2], SRCINVERT);
-	}
-
-	initkey();
-	getorder();
-
-	move1(role[0], clock() - time);
-	move2(role[1], clock() - time);
-	time = clock();
-
-	updataimage();
-	updatabullet();
-
-	EndBatchDraw();
-	if (role[0].hp <= 0) {
-		reborn(role[0]);
-	}
-	if (role[1].hp <= 0) {
-		reborn(role[1]);
-	}
-
-	}
-	while (1);
 	return 0;
 }
