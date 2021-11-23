@@ -7,3 +7,4 @@ enum stateval {
 };
 
 extern int state;
+extern bool playbgmusic;
