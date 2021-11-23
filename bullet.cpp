@@ -26,14 +26,14 @@ void addbullet(int rolenum) {
     newbullet->next = NULL;
     newbullet->direction = role[rolenum].direction;
     if (newbullet->direction == rightdire) {
-      addimage(role[rolenum].x + 123, role[rolenum].y + 79, 20, &gameimage.fire[0], &gameimage.fire[1]);
-      newbullet->x = role[rolenum].x + 123;
-      newbullet->y = role[rolenum].y + 95;
+      addimage((int)role[rolenum].x + 123, (int)role[rolenum].y + 79, 20, &gameimage.fire[0], &gameimage.fire[1]);
+      newbullet->x = (int)role[rolenum].x + 123;
+      newbullet->y = (int)role[rolenum].y + 95;
     }
     else {
-      addimage(role[rolenum].x + 32, role[rolenum].y + 79, 20, &gameimage.fire_left[0], &gameimage.fire_left[1]);
-      newbullet->x = role[rolenum].x - 8;
-      newbullet->y = role[rolenum].y + 95;
+      addimage((int)role[rolenum].x + 32, (int)role[rolenum].y + 79, 20, &gameimage.fire_left[0], &gameimage.fire_left[1]);
+      newbullet->x = (int)role[rolenum].x - 8;
+      newbullet->y = (int)role[rolenum].y + 95;
     }
 
     //if bullet close to role
@@ -43,7 +43,7 @@ void addbullet(int rolenum) {
         && getbullety(newbullet) >= role[shotrole].y + role_tm && getbullety(newbullet) <= role[shotrole].y + role_bm) {
         role[shotrole].hp--;
         role[shotrole].vx = (newbullet->direction) * (backstrength);
-        addimage(role[shotrole].x + 40, role[shotrole].y + 20, 300, &gameimage.hit[0], &gameimage.hit[1]);
+        addimage((int)role[shotrole].x + 40, (int)role[shotrole].y + 20, 300, &gameimage.hit[0], &gameimage.hit[1]);
         free(newbullet);
         return;
       }
@@ -53,7 +53,7 @@ void addbullet(int rolenum) {
         && getbullety(newbullet) >= role[shotrole].y + role_tm && getbullety(newbullet) <= role[shotrole].y + role_bm) {
         role[shotrole].hp--;
         role[shotrole].vx = (newbullet->direction) * (backstrength);
-        addimage(role[shotrole].x + 40, role[shotrole].y + 20, 300, &gameimage.hit[0], &gameimage.hit[1]);
+        addimage((int)role[shotrole].x + 40, (int)role[shotrole].y + 20, 300, &gameimage.hit[0], &gameimage.hit[1]);
         free(newbullet);
         return;
       }
@@ -101,7 +101,7 @@ void deletebullet() {
     if (isdelete) {
       role[shotrole].hp--;
       role[shotrole].vx = (p->next->direction) * (backstrength);
-      addimage(role[shotrole].x + 40, role[shotrole].y + 20, 300, &gameimage.hit[0], &gameimage.hit[1]);
+      addimage((int)role[shotrole].x + 40, (int)role[shotrole].y + 20, 300, &gameimage.hit[0], &gameimage.hit[1]);
     }
 
     //over edge

@@ -1,6 +1,6 @@
 #pragma once
 #include "Settings.h"
-#include "image.h";
+#include "image.h"
 #include "control.h"
 #include "show.h"
 
