@@ -117,11 +117,11 @@ void move1(struct Role &role, clock_t time) {
 void move2(struct Role& role, clock_t time) {
 
 #if __FIND__
-  if (presskey[UP2_KEY]) {
-    role.y -= movespeed;
+  if (GetAsyncKeyState(VK_UP) & 0x8000) {
+    role.y -= movespeed * time;
   }
   if (presskey[DOWN2_KEY]) {
-    role.y += movespeed;
+    role.y += movespeed * time;
   }
 #endif
 
@@ -134,7 +134,6 @@ void move2(struct Role& role, clock_t time) {
       jump[1] = true;
       role.vy = -400;
     }
-#endif
   if (presskey[DOWN2_KEY]) {
     if (land[1] == true) {
       land[1] = false;
@@ -142,6 +141,7 @@ void move2(struct Role& role, clock_t time) {
       role.y += 5;
     }
   }
+#endif
   if (presskey[LEFT2_KEY]) {
     role.x -= movespeed * time;
     role.direction = leftdire;

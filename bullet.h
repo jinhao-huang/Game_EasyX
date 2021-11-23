@@ -20,4 +20,4 @@ void updatabullet();
 void deletebullet();
 int getbulletx(bullet* p);
 int getbullety(bullet* p);
-inline int getbulletendx(bullet* p);
+int getbulletendx(bullet* p);

@@ -15,13 +15,6 @@ void initkey() {
 }
 
 void getorder() {
-#if __TESTKEY__
-	if (_kbhit()) {
-		printf("%d", _getch());
-	}
-#endif
-
-
 	if (_kbhit())
 	{
 		kb = _getch();
@@ -34,7 +27,7 @@ void getorder() {
 			}
 		}
 	}
-	/*
+	/* another way
 	if ((GetAsyncKeyState('W') & 0x8000) && wkb == false)
 	{
 		wkb = true;
@@ -89,10 +82,4 @@ void getorder() {
 			bullet_time2 = clock();
 		}
 	}
-
-#if __TEST__
-	if (GetAsyncKeyState('X') & 0x8000) {
-		printf("role2x:%lf role2y:%lf\n ", role[1].x, role[1].y);
-	}
-#endif
 }

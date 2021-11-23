@@ -6,5 +6,9 @@ enum stateval {
   over
 };
 
+void startgame();
+void initgame();
+int centerx(IMAGE& back, IMAGE& front);
+
 extern int state;
 extern bool playbgmusic;
