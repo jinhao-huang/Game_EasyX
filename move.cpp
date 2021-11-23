@@ -76,12 +76,12 @@ void move1(struct Role &role, clock_t time) {
   }
 
   if (presskey[LEFT_KEY] && role.x > -role_lmargin) {
-    role.x -= movespeed;
+    role.x -= movespeed * time;
     role.direction = leftdire;
   }
 
   if (presskey[RIGHT_KEY] && role.x < width) {
-    role.x += movespeed;
+    role.x += movespeed * time;
     role.direction = rightdire;
   }
   if (land[0] == true) {
@@ -143,12 +143,12 @@ void move2(struct Role& role, clock_t time) {
     }
   }
   if (presskey[LEFT2_KEY] && role.x > -role_lmargin) {
-    role.x -= movespeed;
+    role.x -= movespeed * time;
     role.direction = leftdire;
   }
 
   if (presskey[RIGHT2_KEY] && role.x < width) {
-    role.x += movespeed;
+    role.x += movespeed * time;
     role.direction = rightdire;
   }
 #if !__FIND__

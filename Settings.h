@@ -2,7 +2,8 @@
 
 extern int width;
 extern int height;
-extern int movespeed;
+extern double movespeed;
+extern double backstrength;
 extern int bulletspeed;
 extern int gap_time;
 extern double g;

@@ -42,7 +42,7 @@ void addbullet(int rolenum) {
       if (getbulletx(newbullet) >= role[shotrole].x + rrole_rm && getbulletendx(newbullet) <= role[shotrole].x + rrole_rm
         && getbullety(newbullet) >= role[shotrole].y + role_tm && getbullety(newbullet) <= role[shotrole].y + role_bm) {
         role[shotrole].hp--;
-        role[shotrole].vx = (newbullet->direction) * (300);
+        role[shotrole].vx = (newbullet->direction) * (backstrength);
         addimage(role[shotrole].x + 40, role[shotrole].y + 20, 300, &gameimage.hit[0], &gameimage.hit[1]);
         free(newbullet);
         return;
@@ -52,7 +52,7 @@ void addbullet(int rolenum) {
       if (getbulletx(newbullet) <= role[shotrole].x + lrole_lm && getbulletendx(newbullet) >= role[shotrole].x + lrole_lm
         && getbullety(newbullet) >= role[shotrole].y + role_tm && getbullety(newbullet) <= role[shotrole].y + role_bm) {
         role[shotrole].hp--;
-        role[shotrole].vx = (newbullet->direction) * (300);
+        role[shotrole].vx = (newbullet->direction) * (backstrength);
         addimage(role[shotrole].x + 40, role[shotrole].y + 20, 300, &gameimage.hit[0], &gameimage.hit[1]);
         free(newbullet);
         return;
@@ -100,7 +100,7 @@ void deletebullet() {
     isdelete = isinside(bulletx, bullety, shotrole);
     if (isdelete) {
       role[shotrole].hp--;
-      role[shotrole].vx = (p->next->direction) * (300);
+      role[shotrole].vx = (p->next->direction) * (backstrength);
       addimage(role[shotrole].x + 40, role[shotrole].y + 20, 300, &gameimage.hit[0], &gameimage.hit[1]);
     }
 

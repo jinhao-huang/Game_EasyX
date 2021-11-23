@@ -2,7 +2,8 @@
 
 int width = 1178;
 int height = 674;
-int movespeed = 1;
+double movespeed = 0.35;
+double backstrength = 400;
 int bulletspeed = 6;
 int gap_time = 200;
 double g = 1000;
