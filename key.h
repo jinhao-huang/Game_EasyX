@@ -20,7 +20,7 @@ enum inputkey {
 extern bool presskey[50];
 extern int myinputkey;
 
-extern DWORD bullet_time1, bullet_time2;
+extern clock_t bullet_time1, bullet_time2;
 
 void initkey();
 void getorder();

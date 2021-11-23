@@ -6,8 +6,7 @@ bool presskey[50];
 int kb;
 bool wkb = false;
 
-DWORD bullet_time1, bullet_time2;
-DWORD bullet_time3, bullet_time4;
+clock_t bullet_time1, bullet_time2;
 
 void initkey() {
 	for (int i = 0; i < 50; i++) {
@@ -35,10 +34,6 @@ void getorder() {
 			}
 		}
 	}
-
-
-
-
 	/*
 	if ((GetAsyncKeyState('W') & 0x8000) && wkb == false)
 	{
@@ -80,22 +75,20 @@ void getorder() {
 	}
 	if (GetAsyncKeyState('J') & 0x8000)
 	{
-		if ((bullet_time2 - bullet_time1) > gap_time)
+		if (clock() - bullet_time1 > gap_time)
 		{
 			addbullet(0);
-			bullet_time1 = bullet_time2;
+			bullet_time1 = clock();
 		}
 	}
-	bullet_time2 = GetTickCount();
 	if (GetAsyncKeyState(VK_SPACE) & 0x8000)
 	{
-		if ((bullet_time4 - bullet_time3) > gap_time)
+ 		if (clock() - bullet_time2 > gap_time)
 		{
 			addbullet(1);
-			bullet_time3 = bullet_time4;
+			bullet_time2 = clock();
 		}
 	}
-	bullet_time4 = GetTickCount();
 
 #if __TEST__
 	if (GetAsyncKeyState('X') & 0x8000) {

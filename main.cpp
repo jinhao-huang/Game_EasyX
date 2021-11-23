@@ -13,7 +13,7 @@
 #include "control.h"
 
 void startgame() {
-	DWORD bullet_time1 = bullet_time2 = GetTickCount();
+	bullet_time1 = bullet_time2 = clock();
 	role[0].lives = 5;
 	role[1].lives = 5;
 	reborn(role[0]);
@@ -61,13 +61,13 @@ int main () {
 				state = game;
 				flushmessage(EM_MOUSE);
 				startgame();
-				time = clock();
 			}
 			if (m.lbutton && m.x > 709 && m.x < 1109 && m.y > 544 && m.y < 613) {
 				return 0;
 			}
 		}
 		while (state == game) {
+			time = clock();
 			BeginBatchDraw();
 			putimage(0, 0, &gameimage.background1);
 			putimage(centerx(gameimage.background1, gameimage.background2[0]), 0, &gameimage.background2[0], SRCAND);
@@ -78,7 +78,6 @@ int main () {
 			getorder();
 			move1(role[0], clock() - time);
 			move2(role[1], clock() - time);
-			time = clock();
 			updataimage();
 			updatabullet();
 			death();
