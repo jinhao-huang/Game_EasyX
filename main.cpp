@@ -20,7 +20,7 @@
 int main () {
 	ExMessage m;
 	clock_t time;
-	initgraph (width, height, EW_SHOWCONSOLE);
+	initgraph (width, height);
 	initimage();
 	initgame();
 	state = menu;
