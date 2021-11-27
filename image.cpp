@@ -40,6 +40,8 @@ void initimage() {
 
   loadimage(&gameimage.winner[0], _T("image\\winner1.png"));
   loadimage(&gameimage.winner[1], _T("image\\winner2.png"));
+
+  loadimage(&gameimage.backmenu, _T("image\\backmenu.png"));
 }
 
 void drawAlpha(IMAGE* picture, int  picture_x, int picture_y) //x为载入图片的X坐标，y为Y坐标

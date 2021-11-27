@@ -16,8 +16,9 @@ extern bullet* bullettail;
 
 void initbullet();
 void addbullet(int rolenum);
-void updatabullet();
-void deletebullet();
 int getbulletx(bullet* p);
 int getbullety(bullet* p);
 int getbulletendx(bullet* p);
+void deletebullet();
+void updatabullet();
+void clearbullet();

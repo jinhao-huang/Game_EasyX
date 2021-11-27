@@ -27,6 +27,8 @@ struct Gameimage {
 	IMAGE hp;
 
 	IMAGE winner[2];
+
+	IMAGE backmenu;
 };
 
 extern struct Gameimage gameimage;

@@ -82,4 +82,9 @@ void getorder() {
 			bullet_time2 = clock();
 		}
 	}
+	if (GetAsyncKeyState(VK_ESCAPE) & 0x8000)
+	{
+		state = back;
+		drawAlpha(&gameimage.backmenu, 0, 0);
+	}
 }

@@ -8,6 +8,8 @@ int bulletspeed = 6;
 int gap_time = 500;
 double g = 1000;
 double gx = 800;
+char player1[128] = "Íæ¼Ò1";
+char player2[128] = "Íæ¼Ò2";
 
 int initialhp = 20;
 

@@ -74,6 +74,10 @@ inline int getbulletx(bullet *p) {
   }
 }
 
+inline int getbullety(bullet* p) {
+  return (p->y) + 2;
+}
+
 inline int getbulletendx(bullet* p) {
   if (p->direction == rightdire) {
     return p->x;
@@ -81,10 +85,6 @@ inline int getbulletendx(bullet* p) {
   else {
     return (p->x) + 85;
   }
-}
-
-inline int getbullety(bullet* p) {
-  return (p->y) + 2;
 }
 
 void deletebullet() {
@@ -136,6 +136,19 @@ void updatabullet() {
       putimage(p->x, p->y, &gameimage.bullet_left[1], SRCINVERT);
     }
     p->x = p->x + (bulletspeed * (p->direction));
+  }
+  return;
+}
+
+void clearbullet() {
+  bullet* p, * deletep;
+  deletep = bullethead->next;
+  bullethead->next = NULL;
+  bullettail = bullethead;
+  while (deletep != NULL) {
+    p = deletep->next;
+    free(deletep);
+    deletep = p;
   }
   return;
 }

@@ -35,8 +35,8 @@ void showpanel() {
   drawAlpha(&gameimage.role_panel, 890, 35);
   drawAlpha(&hp2, 928, 54);
 
-  outtextxy(142, 40, _T("玩家1"));
-  outtextxy(933, 40, _T("玩家2"));
+  outtextxy(142, 40, player1);
+  outtextxy(933, 40, player2);
 
 	_stprintf_s(lives1, _T("生命数：%d"), role[0].lives);
 	_stprintf_s(lives2, _T("生命数：%d"), role[1].lives);

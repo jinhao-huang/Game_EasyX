@@ -8,9 +8,12 @@ int state;
 bool playbgmusic;
 
 void startgame() {
+	clearbullet();
 	bullet_time1 = bullet_time2 = clock();
 	role[0].lives = 5;
 	role[1].lives = 5;
+	role[0].direction = leftdire;
+	role[1].direction = rightdire;
 	reborn(role[0]);
 	reborn(role[1]);
 }
@@ -38,6 +41,31 @@ void initgame() {
 	playbgmusic = false;
 
 	return;
+}
+
+void initsettings(FILE* fp) {
+	fopen_s(&fp, "settings.ini", "r");
+	if (fp == NULL)
+		return;
+	else {
+		fscanf_s(fp, "Player1:%s\n", player1, sizeof(player1));
+		fscanf_s(fp, "Player2:%s\n", player2, sizeof(player2));
+		fclose(fp);
+		return;
+	}
+}
+
+void writesettings(FILE* fp) {
+	fopen_s(&fp, "settings.ini", "w");
+	if (fp == NULL) {
+		exit(0);
+	}
+	else {
+		fprintf_s(fp, "Player1:%s\n", "Íæ¼Òa");
+		fprintf_s(fp, "Player2:%s\n", "Íæ¼Òb");
+		fclose(fp);
+		return;
+	}
 }
 
 int centerx(IMAGE& back, IMAGE& front) {

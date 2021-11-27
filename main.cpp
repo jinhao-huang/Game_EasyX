@@ -1,8 +1,9 @@
 #include <graphics.h>
 #include <windows.h>
-#include<Mmsystem.h>
+#include <Mmsystem.h>
 #include <stdio.h>
 #include <time.h>
+#include <stdio.h>
 #include "key.h"
 #include "move.h"
 #include "Settings.h"
@@ -15,12 +16,13 @@
 #include <mmsystem.h>
 #pragma comment(lib,"winmm.lib")
 
-
-
 int main () {
 	ExMessage m;
 	clock_t time;
-	initgraph (width, height);
+	FILE* fp = NULL;
+	initgraph (width, height, SHOWCONSOLE);
+	writesettings(fp);
+	initsettings(fp);
 	initimage();
 	initgame();
 	state = menu;
@@ -38,6 +40,7 @@ int main () {
 				closegraph();
 				return 0;
 			}
+
 		}
 		while (state == game) {
 			if (playbgmusic == false) {
@@ -68,7 +71,19 @@ int main () {
 				state = game;
 				flushmessage(EM_MOUSE);
 				startgame();
-				time = clock();
+			}
+			if (m.lbutton && m.x < 330 && m.y > 545 && m.y < 600) {
+				state = menu;
+				flushmessage(EM_MOUSE);
+			}
+		}
+		while (state == back) {
+			PlaySound(NULL, NULL, SND_FILENAME | SND_PURGE);
+			playbgmusic = false;
+			m = getmessage(EM_MOUSE);
+			if (m.lbutton && m.x > 837 && m.y > 545 && m.y < 600) {
+				state = game;
+				flushmessage(EM_MOUSE);
 			}
 			if (m.lbutton && m.x < 330 && m.y > 545 && m.y < 600) {
 				state = menu;

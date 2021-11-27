@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <Windows.h>
+#include "bullet.h"
+#include "Settings.h"
 #include "role.h"
 #include "image.h"
 

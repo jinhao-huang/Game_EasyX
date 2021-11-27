@@ -8,6 +8,8 @@ extern int bulletspeed;
 extern int gap_time;
 extern double g;
 extern double gx;
+extern char player1[128];
+extern char player2[128];
 
 extern int initialhp;
 
