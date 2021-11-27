@@ -1,4 +1,4 @@
 #pragma once
 #include <stdio.h>
 
-#define __FIND__ 1
+#define __FIND__ 0
