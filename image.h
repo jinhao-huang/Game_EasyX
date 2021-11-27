@@ -29,6 +29,8 @@ struct Gameimage {
 	IMAGE winner[2];
 
 	IMAGE backmenu;
+
+	IMAGE settings;
 };
 
 extern struct Gameimage gameimage;

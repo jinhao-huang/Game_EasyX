@@ -13,7 +13,7 @@ IMAGE hp2;
 
 void death() {
   if (role[0].hp <= 0 || role[0].y > 800) {
-    if (role[0].lives > 0)
+    if (role[0].lives > 1)
     {
     reborn(role[0]);
     role[0].lives -= 1;
@@ -24,7 +24,7 @@ void death() {
     }
   }
   if (role[1].hp <= 0 || role[1].y > 800) {
-    if (role[1].lives > 0) {
+    if (role[1].lives > 1) {
     reborn(role[1]);
     role[1].lives -= 1;
     }

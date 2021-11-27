@@ -1,3 +1,9 @@
+#include <graphics.h>
+#include <stdio.h>
+#include <conio.h>
+#include <tchar.h>
+#include "show.h"
+#include "control.h"
 #pragma once
 
 extern int width;
@@ -10,8 +16,13 @@ extern double g;
 extern double gx;
 extern char player1[128];
 extern char player2[128];
+extern int rolelives;
 
 extern int initialhp;
 
 extern int bornx[2];
 extern int borny[2];
+
+void showsettings();
+void changesetting(int& settings);
+void changesetting(char* par);

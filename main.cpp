@@ -19,10 +19,8 @@
 int main () {
 	ExMessage m;
 	clock_t time;
-	FILE* fp = NULL;
 	initgraph (width, height, SHOWCONSOLE);
-	writesettings(fp);
-	initsettings(fp);
+	initsettings();
 	initimage();
 	initgame();
 	state = menu;
@@ -40,7 +38,10 @@ int main () {
 				closegraph();
 				return 0;
 			}
-
+			if (m.lbutton && m.x > 786 && m.x < 1033 && m.y > 66 && m.y < 124) {
+				state = state_setting;
+				showsettings();
+			}
 		}
 		while (state == game) {
 			if (playbgmusic == false) {
@@ -87,6 +88,30 @@ int main () {
 			}
 			if (m.lbutton && m.x < 330 && m.y > 545 && m.y < 600) {
 				state = menu;
+				flushmessage(EM_MOUSE);
+			}
+		}
+		while (state == state_setting) {
+			m = getmessage(EM_MOUSE);
+			if (m.lbutton && m.x > 679 && m.x < 1079 && m.y > 450 && m.y < 520) {
+				state = game;
+				flushmessage(EM_MOUSE);
+				startgame();
+			}
+			if (m.lbutton && m.x > 679 && m.x < 1079 && m.y > 566 && m.y < 635) {
+				state = menu;
+				flushmessage(EM_MOUSE);
+			}
+			if (m.lbutton && m.x > 383 && m.x < 534 && m.y > 577 && m.y < 635) {
+				changesetting(rolelives);
+				flushmessage(EM_MOUSE);
+			}
+			if (m.lbutton && m.x > 383 && m.x < 534 && m.y > 332 && m.y < 390) {
+				changesetting(player1);
+				flushmessage(EM_MOUSE);
+			}
+			if (m.lbutton && m.x > 973 && m.x < 1124 && m.y > 332 && m.y < 390) {
+				changesetting(player2);
 				flushmessage(EM_MOUSE);
 			}
 		}

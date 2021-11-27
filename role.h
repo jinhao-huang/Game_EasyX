@@ -12,7 +12,7 @@ enum dire {
 struct Role {
 	double x, y;
 	int hp = initialhp; //health point
-	int lives = 5;
+	int lives = rolelives;
 	int direction = rightdire;
 	double vy = 0;
 	double vx = 0;
