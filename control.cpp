@@ -23,6 +23,7 @@ void startgame() {
 	role[1].direction = rightdire;
 	reborn(role[0]);
 	reborn(role[1]);
+	PlaySound(_T("audio\\bgmusic.wav"), NULL, SND_ASYNC | SND_FILENAME | SND_LOOP);
 }
 
 void initgame() {
@@ -41,7 +42,7 @@ void initgame() {
 
 	role[0].num = 0;
 	role[1].num = 1;
-	playbgmusic = false;
+	playbgmusic = true;
 
 	return;
 }
@@ -152,6 +153,7 @@ void savedata() {
 void loaddata() {
 	GetPrivateProfileString("Setting", "Exist", "ERROR", buffer, sizeof(buffer), datafilelocation);
 	if (strcmp(buffer, "yes")) {
+		PlaySound(NULL, NULL, SND_FILENAME | SND_PURGE);
 		hwnd = GetHWnd();
 		MessageBox(hwnd, "没有可用存档!", _T("提示"), MB_OK | MB_ICONWARNING);
 		state = menu;

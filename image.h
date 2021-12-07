@@ -31,6 +31,8 @@ struct Gameimage {
 	IMAGE backmenu;
 
 	IMAGE settings;
+
+	IMAGE check;
 };
 
 extern struct Gameimage gameimage;

@@ -44,6 +44,7 @@ void initimage() {
   loadimage(&gameimage.backmenu, _T("image\\backmenu.png"));
 
   loadimage(&gameimage.settings, _T("image\\settings.png"));
+  loadimage(&gameimage.check, _T("image\\check.png"));
 }
 
 void drawAlpha(IMAGE* picture, int  picture_x, int picture_y) //x为载入图片的X坐标，y为Y坐标
