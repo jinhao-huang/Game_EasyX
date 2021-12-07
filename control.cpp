@@ -150,6 +150,13 @@ void savedata() {
 }
 
 void loaddata() {
+	GetPrivateProfileString("Setting", "Exist", "ERROR", buffer, sizeof(buffer), datafilelocation);
+	if (strcmp(buffer, "yes")) {
+		hwnd = GetHWnd();
+		MessageBox(hwnd, "没有可用存档!", _T("提示"), MB_OK | MB_ICONWARNING);
+		return;
+	}
+
 	role[0].lives = GetPrivateProfileInt("Role1", "lives", rolelives, datafilelocation);
 	role[0].hp = GetPrivateProfileInt("Role1", "hp", initialhp, datafilelocation);
 	role[0].direction = GetPrivateProfileInt("Role1", "direction", rightdire, datafilelocation);
