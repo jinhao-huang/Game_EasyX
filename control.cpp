@@ -154,6 +154,7 @@ void loaddata() {
 	if (strcmp(buffer, "yes")) {
 		hwnd = GetHWnd();
 		MessageBox(hwnd, "没有可用存档!", _T("提示"), MB_OK | MB_ICONWARNING);
+		state = menu;
 		return;
 	}
 
