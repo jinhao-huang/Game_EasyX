@@ -20,8 +20,8 @@ extern int rolelives;
 
 extern int initialhp;
 
-extern int bornx[2];
-extern int borny[2];
+extern double bornx[2];
+extern double borny[2];
 
 void showsettings();
 void changesetting(int& settings);

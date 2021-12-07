@@ -16,6 +16,7 @@ extern bullet* bullettail;
 
 void initbullet();
 void addbullet(int rolenum);
+void loadbullet(int x, int y, int player, int direction);
 int getbulletx(bullet* p);
 int getbullety(bullet* p);
 int getbulletendx(bullet* p);

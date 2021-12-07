@@ -19,7 +19,7 @@
 int main () {
 	ExMessage m;
 	clock_t time;
-	initgraph (width, height, SHOWCONSOLE);
+	initgraph (width, height);
 	initsettings();
 	initimage();
 	initgame();
@@ -29,10 +29,16 @@ int main () {
 		while (state == menu) {
 			putimage(0, 0, &gameimage.start);
 			m = getmessage(EM_MOUSE);
-			if (m.lbutton && m.x > 709 && m.x < 1109 && m.y > 428 && m.y < 498) {
+			if (m.lbutton && m.x > 709 && m.x < 1109 && m.y > 368 && m.y < 438) {
 				state = game;
 				flushmessage(EM_MOUSE);
 				startgame();
+			}
+			if (m.lbutton && m.x > 709 && m.x < 1109 && m.y > 456 && m.y < 526) {
+				state = game;
+				flushmessage(EM_MOUSE);
+				startgame();
+				loaddata();
 			}
 			if (m.lbutton && m.x > 709 && m.x < 1109 && m.y > 544 && m.y < 613) {
 				closegraph();
@@ -89,6 +95,7 @@ int main () {
 			if (m.lbutton && m.x < 330 && m.y > 545 && m.y < 600) {
 				state = menu;
 				flushmessage(EM_MOUSE);
+				savedata();
 			}
 		}
 		while (state == state_setting) {

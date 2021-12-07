@@ -65,6 +65,22 @@ void addbullet(int rolenum) {
   }
 }
 
+void loadbullet(int x, int y, int player, int direction) {
+  bullet* newbullet = (bullet*)malloc(sizeof(bullet));
+  if (newbullet == NULL)
+    return;
+  else {
+  newbullet->x = x;
+  newbullet->y = y;
+  newbullet->player = player;
+  newbullet->direction = direction;
+  newbullet->next = bullethead->next;
+  bullethead->next = newbullet;
+  return;
+  }
+
+}
+
 inline int getbulletx(bullet *p) {
   if (p->direction == rightdire) {
     return (p->x) + 85;

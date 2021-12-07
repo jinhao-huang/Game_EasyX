@@ -15,8 +15,8 @@ char char_rolelives[10];
 
 int initialhp = 20;
 
-int bornx[2] = { 350, 700 };
-int borny[2] = { -100, -100 };
+double bornx[2] = { 350, 700 };
+double borny[2] = { -100, -100 };
 
 void showsettings() {
   drawAlpha(&gameimage.settings, 0, 0);

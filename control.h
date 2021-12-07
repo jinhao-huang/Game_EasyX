@@ -19,6 +19,8 @@ void startgame();
 void initgame();
 void initsettings();
 void writesettings();
+void savedata();
+void loaddata();
 int centerx(IMAGE& back, IMAGE& front);
 
 extern LOGFONT myfont;
