@@ -28,6 +28,8 @@ int main () {
 	while (1) {
 		while (state == menu) {
 			putimage(0, 0, &gameimage.start);
+			if (playbgmusic == true)
+				drawAlpha(&gameimage.check, 654, 98);
 			m = getmessage(EM_MOUSE);
 			if (m.lbutton && m.x > 709 && m.x < 1109 && m.y > 368 && m.y < 438) {
 				state = game;
@@ -42,11 +44,22 @@ int main () {
 			}
 			if (m.lbutton && m.x > 709 && m.x < 1109 && m.y > 544 && m.y < 613) {
 				closegraph();
+				flushmessage(EM_MOUSE);
 				return 0;
 			}
 			if (m.lbutton && m.x > 786 && m.x < 1033 && m.y > 66 && m.y < 124) {
 				state = state_setting;
+				flushmessage(EM_MOUSE);
 				showsettings();
+			}
+			if (m.lbutton && m.x > 572 && m.x < 698 && m.y > 68 && m.y < 125) {
+				if (playbgmusic == true) {
+					playbgmusic = false;
+				}
+				else {
+					playbgmusic = true;
+				}
+				flushmessage(EM_MOUSE);
 			}
 		}
 		while (state == game) {
@@ -84,7 +97,8 @@ int main () {
 			m = getmessage(EM_MOUSE);
 			if (m.lbutton && m.x > 837 && m.y > 545 && m.y < 600) {
 				state = game;
-				PlaySound(_T("audio\\bgmusic.wav"), NULL, SND_ASYNC | SND_FILENAME | SND_LOOP);
+				if(playbgmusic == true)
+					PlaySound(_T("audio\\bgmusic.wav"), NULL, SND_ASYNC | SND_FILENAME | SND_LOOP);
 				flushmessage(EM_MOUSE);
 			}
 			if (m.lbutton && m.x < 330 && m.y > 545 && m.y < 600) {

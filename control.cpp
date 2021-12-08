@@ -23,7 +23,8 @@ void startgame() {
 	role[1].direction = rightdire;
 	reborn(role[0]);
 	reborn(role[1]);
-	PlaySound(_T("audio\\bgmusic.wav"), NULL, SND_ASYNC | SND_FILENAME | SND_LOOP);
+	if(playbgmusic == true)
+		PlaySound(_T("audio\\bgmusic.wav"), NULL, SND_ASYNC | SND_FILENAME | SND_LOOP);
 }
 
 void initgame() {
