@@ -19,6 +19,7 @@ enum inputkey {
 };
 extern bool presskey[50];
 extern int myinputkey;
+extern bool press;
 
 extern clock_t bullet_time1, bullet_time2;
 

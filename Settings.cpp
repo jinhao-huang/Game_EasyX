@@ -31,15 +31,21 @@ void showsettings() {
 
 void changesetting(int& par) {
   char s[10];
-  InputBox(s, 10, _T("请输入新值"));
-  par = atoi(s);
-  writesettings();
+  InputBox(s, 5, _T("请输入新值"));
+  
+  if (atoi(s) < 1) {
+    MessageBox(GetHWnd(), "无效的生命数!", _T("提示"), MB_OK | MB_ICONWARNING);
+  }
+  else {
+    par = atoi(s);
+    writesettings();
+  }
   showsettings();
 }
 
 void changesetting(char* par) {
   char s[20];
-  InputBox(s, 20, _T("请输入新用户名"));
+  InputBox(s, 10, _T("请输入新用户名"));
   strcpy(par, s);
   writesettings();
   showsettings();

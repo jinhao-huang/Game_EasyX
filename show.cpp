@@ -1,6 +1,6 @@
 #include "show.h"
-TCHAR lives1[10];
-TCHAR lives2[10];
+TCHAR lives1[64];
+TCHAR lives2[64];
 
 void gameover(int winnernum) {
 	drawAlpha(&gameimage.winner[winnernum - 1], 0, 0);

@@ -5,6 +5,7 @@ int myinputkey;
 bool presskey[50];
 int kb;
 bool wkb = false;
+bool press;
 
 clock_t bullet_time1, bullet_time2;
 
